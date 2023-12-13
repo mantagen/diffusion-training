@@ -5,9 +5,16 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Prompt.')
 parser.add_argument('--prompt', type=str, help='Prompt', required=False)
+parser.add_argument('--subject', type=str, help='Prompt', required=True)
 parser.add_argument('--model', type=str, help='Prompt', required=True)
 args = parser.parse_args()
-prompt = args.prompt
+
+if args.prompt:
+    prompt = args.prompt
+else:
+    subject = args.subject
+    prompt = f"portrait of {subject}, sun shining, photo realistic illustration by greg rutkowski, thomas kindkade, alphonse mucha, loish, norman rockwell."
+
 model_id = args.model
 
 device = "cuda"
